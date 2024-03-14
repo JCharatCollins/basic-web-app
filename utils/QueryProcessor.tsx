@@ -13,7 +13,7 @@ export default function QueryProcessor(query: string): string {
 
   // Regex for Which of the following numbers is the largest: 98, 5, 62?
   const numbers = new RegExp(
-    /Which of the following numbers is the largest: (\d+), (\d+), (\d+)/
+    /^Which of the following numbers is the largest: (\d+), (\d+), (\d+)\?$/
   );
 
   if (numbers.test(query)) {
@@ -41,7 +41,7 @@ export default function QueryProcessor(query: string): string {
 
   // Which of the following numbers is both a square and a cube: 3704, 4025, 705, 49, 2088, 1, 1728?
   const squareAndCube = new RegExp(
-    /Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/
+    /^Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)\?$/
   );
 
   if (squareAndCube.test(query)) {
@@ -60,7 +60,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   // What is 36 multiplied by 83?
-  const multiply = new RegExp(/What is (\d+) multiplied by (\d+)/);
+  const multiply = new RegExp(/^What is (\d+) multiplied by (\d+)\?$/);
   if (multiply.test(query)) {
     const match = query.match(multiply);
     if (match) {
@@ -83,7 +83,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   // What is 91 minus 40?
-  const subtract = new RegExp(/What is (\d+) minus (\d+)/);
+  const subtract = new RegExp(/^What is (\d+) minus (\d+)\?$/);
   if (subtract.test(query)) {
     const match = query.match(subtract);
     if (match) {
@@ -95,7 +95,7 @@ export default function QueryProcessor(query: string): string {
 
   // Which of the following numbers are primes: 13, 69, 89, 28, 19?
   const primes = new RegExp(
-    /Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/
+    /^Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)\?$/
   );
 
   if (primes.test(query)) {

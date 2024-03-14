@@ -13,9 +13,8 @@ export default function QueryProcessor(query: string): string {
 
   const numbers = "Which of the following numbers is the largest:"
 
-  if (query.toLowerCase().includes(numbers)) {
+  if (query.toLowerCase().includes(numbers.toLowerCase())) {
     const sub = query.toLowerCase().substring(numbers.length, query.length);
-  
     const numList = sub.split(", ");
     const numArr = numList.map((num) => parseInt(num));
     const max = Math.max(...numArr);

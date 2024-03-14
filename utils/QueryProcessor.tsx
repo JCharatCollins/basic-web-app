@@ -11,5 +11,16 @@ export default function QueryProcessor(query: string): string {
     return "Pob.";
   }
 
+  const numbers = "Which of the following numbers is the largest:"
+
+  if (query.toLowerCase().includes(numbers)) {
+    const sub = query.toLowerCase().substring(numbers.length, query.length);
+  
+    const numList = sub.split(", ");
+    const numArr = numList.map((num) => parseInt(num));
+    const max = Math.max(...numArr);
+    return max.toString();
+  }
+
   return "";
 }

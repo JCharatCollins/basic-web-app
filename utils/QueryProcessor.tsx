@@ -51,16 +51,24 @@ export default function QueryProcessor(query: string): string {
       const numbers = match.slice(1).map((n) => parseInt(n));
       for (let i = 0; i < numbers.length; i++) {
         const number = numbers[i];
-        if (
-          Math.sqrt(number) % 1 === 0 &&
-          Math.cbrt(number) % 1 === 0
-        ) {
+        if (Math.sqrt(number) % 1 === 0 && Math.cbrt(number) % 1 === 0) {
           return number.toString();
         }
       }
     }
 
     return "";
+  }
+
+  // What is 36 multiplied by 83?
+  const multiply = new RegExp(/What is (\d+) multiplied by (\d+)/);
+  if (multiply.test(query.toLowerCase())) {
+    const match = query.match(multiply);
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      return (x * y).toString();
+    }
   }
 
   return "";

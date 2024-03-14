@@ -94,5 +94,28 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  // Which of the following numbers are primes: 13, 69, 89, 28, 19?
+  const primes = new RegExp(
+    /Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/
+  );
+
+  if (primes.test(query)) {
+    const match = query.match(primes);
+    if (match) {
+      const numbers = match.slice(1).map((n) => parseInt(n));
+      const primes = numbers.filter((n) => {
+        if (n === 1) return false;
+        if (n === 2) return true;
+        for (let i = 2; i < n; i++) {
+          if (n % i === 0) return false;
+        }
+        return true;
+      });
+      return primes.join(", ");
+    }
+
+    return "";
+  }
+
   return "";
 }

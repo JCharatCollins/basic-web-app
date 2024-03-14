@@ -71,5 +71,28 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  // What is 23 plus 84 plus 43?
+  const addMultiple = new RegExp(/What is (\d+) plus (\d+) plus (\d+)/);
+  if (addMultiple.test(query)) {
+    const match = query.match(addMultiple);
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const z = parseInt(match[3]);
+      return (x + y + z).toString();
+    }
+  }
+
+  // What is 91 minus 40?
+  const subtract = new RegExp(/What is (\d+) minus (\d+)/);
+  if (subtract.test(query)) {
+    const match = query.match(subtract);
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      return (x - y).toString();
+    }
+  }
+
   return "";
 }

@@ -11,20 +11,22 @@ export default function QueryProcessor(query: string): string {
     return "Pob.";
   }
 
-  // Regex for which of the following numbers is the largest
-  const numbers = "which of the following numbers is the largest: ";
+  // Regex for which of the following numbers is the largest: x, y, z
+  const numbers = /which of the following numbers is the largest: (\d+, \d+, \d+)/;
 
-  if (query.toLowerCase().includes(numbers.toLowerCase())) {
-    const sub = query.toLowerCase().substring(numbers.length, query.length);
-    const numList = sub.split(", ");
-    const numArr = numList.map((num) => parseInt(num));
-    const max = Math.max(...numArr);
-    return max.toString();
+  if (numbers.test(query.toLowerCase())) {
+    const match = query.match(numbers);
+    if (match) {
+      const numbers = match[1].split(", ").map((n) => parseInt(n));
+      return Math.max(...numbers).toString();
+    }
+
+    return "";
   }
 
   // Regex for what is x + y
   const add = /what is (\d+) plus (\d+)/;
-  if (add.test(query)) {
+  if (add.test(query.toLowerCase())) {
     const match = query.match(add);
     if (match) {
       const x = parseInt(match[1]);

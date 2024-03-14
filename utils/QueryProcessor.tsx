@@ -16,7 +16,7 @@ export default function QueryProcessor(query: string): string {
     /Which of the following numbers is the largest: (\d+), (\d+), (\d+)/
   );
 
-  if (numbers.test(query.toLowerCase())) {
+  if (numbers.test(query)) {
     const match = query.match(numbers);
     if (match) {
       const x = parseInt(match[1]);
@@ -30,7 +30,7 @@ export default function QueryProcessor(query: string): string {
 
   // Regex for what is x + y?
   const add = new RegExp(/What is (\d+) plus (\d+)/);
-  if (add.test(query.toLowerCase())) {
+  if (add.test(query)) {
     console.log("add");
     const match = query.match(add);
     if (match) {
@@ -45,7 +45,7 @@ export default function QueryProcessor(query: string): string {
     /Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/
   );
 
-  if (squareAndCube.test(query.toLowerCase())) {
+  if (squareAndCube.test(query)) {
     const match = query.match(squareAndCube);
     if (match) {
       const numbers = match.slice(1).map((n) => parseInt(n));
@@ -62,7 +62,7 @@ export default function QueryProcessor(query: string): string {
 
   // What is 36 multiplied by 83?
   const multiply = new RegExp(/What is (\d+) multiplied by (\d+)/);
-  if (multiply.test(query.toLowerCase())) {
+  if (multiply.test(query)) {
     const match = query.match(multiply);
     if (match) {
       const x = parseInt(match[1]);

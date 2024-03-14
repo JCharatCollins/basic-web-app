@@ -117,7 +117,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   // What is 20 to the power of 92?
-  const power = new RegExp(/^What is (\d+) to the power of (\d+)\?$/);
+  const power = new RegExp(/What is (\d+) to the power of (\d+)/);
   if (power.test(query)) {
     const match = query.match(power);
     if (match) {

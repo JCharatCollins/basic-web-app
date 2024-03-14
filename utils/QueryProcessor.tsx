@@ -12,7 +12,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   // Regex for which of the following numbers is the largest: x, y, z
-  const numbers = /which of the following numbers is the largest: (\d+, \d+, \d+)/;
+  const numbers = /which of the following numbers is the largest: (\d+, \d+, \d+)\?/;
 
   if (numbers.test(query.toLowerCase())) {
     const match = query.match(numbers);

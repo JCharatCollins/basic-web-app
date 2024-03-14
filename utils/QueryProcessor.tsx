@@ -24,8 +24,8 @@ export default function QueryProcessor(query: string): string {
     return "";
   }
 
-  // Regex for what is x + y
-  const add = /what is (\d+) plus (\d+)/;
+  // Regex for what is x + y?
+  const add = /what is (\d+) plus (\d+)\?/;
   if (add.test(query.toLowerCase())) {
     const match = query.match(add);
     if (match) {

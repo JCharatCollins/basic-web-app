@@ -29,9 +29,8 @@ export default function QueryProcessor(query: string): string {
   }
 
   // Regex for what is x + y?
-  const add = new RegExp(/What is (\d+) plus (\d+)/);
+  const add = new RegExp(/^What is (\d+) plus (\d+)\?$/);
   if (add.test(query)) {
-    console.log("add");
     const match = query.match(add);
     if (match) {
       const x = parseInt(match[1]);
@@ -72,7 +71,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   // What is 23 plus 84 plus 43?
-  const addMultiple = new RegExp(/What is (\d+) plus (\d+) plus (\d+)/);
+  const addMultiple = new RegExp(/^What is (\d+) plus (\d+) plus (\d+)\?$/);
   if (addMultiple.test(query)) {
     const match = query.match(addMultiple);
     if (match) {

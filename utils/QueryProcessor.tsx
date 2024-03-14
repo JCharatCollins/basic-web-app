@@ -40,5 +40,28 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  // Which of the following numbers is both a square and a cube: 3704, 4025, 705, 49, 2088, 1, 1728?
+  const squareAndCube = new RegExp(
+    /Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/
+  );
+
+  if (squareAndCube.test(query.toLowerCase())) {
+    const match = query.match(squareAndCube);
+    if (match) {
+      const numbers = match.slice(1).map((n) => parseInt(n));
+      for (let i = 0; i < numbers.length; i++) {
+        const number = numbers[i];
+        if (
+          Math.sqrt(number) % 1 === 0 &&
+          Math.cbrt(number) % 1 === 0
+        ) {
+          return number.toString();
+        }
+      }
+    }
+
+    return "";
+  }
+
   return "";
 }
